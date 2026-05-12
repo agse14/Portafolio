@@ -6,7 +6,7 @@
 			description: "Dashboard SPA empresarial con autenticación OAuth2 usando Laravel Passport, gestión de usuarios, verificación de email y sistema de notificaciones.",
 			image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
 			tags: ["Laravel", "Vue.js", "OAuth2", "Bootstrap"],
-			github: "https://github.com/mpn",
+			github: "https://github.com/agse14/mezclas-incmnsz",
 			demo: "#"
 		},
 		{
@@ -16,7 +16,7 @@
 			image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
 			tags: ["Svelte", "TailwindCSS", "ApexCharts", "Jest"],
 			github: "https://github.com/mpn",
-			demo: "#"
+			demo: "https://sistema.losolivosestancias.com.mx/"
 		},
 		{
 			id: 3,
@@ -34,7 +34,7 @@
 			image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop",
 			tags: ["SvelteKit", "TypeScript", "Playwright", "Vite"],
 			github: "https://github.com/mpn",
-			demo: "#"
+			demo: "https://supra-red.vercel.app/"
 		},
 		{
 			id: 5,
@@ -43,7 +43,7 @@
 			image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
 			tags: ["SvelteKit", "TypeScript", "TailwindCSS", "Luxon"],
 			github: "https://github.com/mpn",
-			demo: "#"
+			demo: "https://conduent-si.vercel.app/"
 		},
 		{
 			id: 6,
@@ -52,7 +52,7 @@
 			image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
 			tags: ["Svelte", "TailwindCSS", "ApexCharts", "Rollup"],
 			github: "https://github.com/mpn",
-			demo: "#"
+			demo: "https://cotizador.cuida24.com/"
 		}
 	];
 </script>
