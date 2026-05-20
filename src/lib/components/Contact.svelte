@@ -59,7 +59,7 @@
 						bind:value={formData.email}
 						required
 						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-						placeholder="tu@email.com"
+						placeholder="hacktivartemexico@gmail.com"
 					/>
 				</div>
 				
@@ -108,7 +108,7 @@
 					</svg>
 				</div>
 				<h3 class="font-semibold mb-1">Email</h3>
-				<p class="text-sm text-gray-600 dark:text-gray-300">tu@email.com</p>
+				<p class="text-sm text-gray-600 dark:text-gray-300">hacktivartemexico@gmail.com</p>
 			</div>
 			
 			<div class="p-6">
@@ -119,7 +119,7 @@
 					</svg>
 				</div>
 				<h3 class="font-semibold mb-1">Ubicación</h3>
-				<p class="text-sm text-gray-600 dark:text-gray-300">Tu Ciudad, País</p>
+				<p class="text-sm text-gray-600 dark:text-gray-300">Monterrey, Nuevo León, México</p>
 			</div>
 			
 			<div class="p-6">

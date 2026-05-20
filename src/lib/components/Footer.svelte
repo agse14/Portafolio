@@ -41,8 +41,8 @@
 		</div>
 		
 		<div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-			<p>&copy; {new Date().getFullYear()} Andrés. Todos los derechos reservados.</p>
-			<p class="mt-2 text-sm">Construido con ❤️ usando SvelteKit y TailwindCSS</p>
+			<p>&copy; {new Date().getFullYear()} Andrés Sánchez. Todos los derechos reservados.</p>
+			<p class="mt-2 text-sm">Construido con SvelteKit y TailwindCSS</p>
 		</div>
 	</div>
 </footer>
