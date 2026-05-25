@@ -34,25 +34,25 @@
 </script>
 
 <section id="skills" class="section-container">
-	<h2 class="text-4xl font-bold text-center mb-12">Habilidades</h2>
-	
-	<div class="grid md:grid-cols-3 gap-8">
+	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12">Habilidades</h2>
+
+	<div class="grid md:grid-cols-3 gap-6">
 		{#each skills as skillGroup}
 			<div class="card p-6">
-				<h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400">
+				<h3 class="text-lg font-semibold tracking-tight mb-6 text-primary-600">
 					{skillGroup.category}
 				</h3>
-				
+
 				<div class="space-y-4">
 					{#each skillGroup.items as skill}
 						<div>
-							<div class="flex justify-between mb-1">
-								<span class="text-sm font-medium">{skill.name}</span>
-								<span class="text-sm text-gray-500 dark:text-gray-400">{skill.level}%</span>
+							<div class="flex justify-between mb-1.5">
+								<span class="text-sm text-ink-secondary">{skill.name}</span>
+								<span class="text-xs text-ink-mute">{skill.level}%</span>
 							</div>
-							<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-								<div 
-									class="bg-primary-600 h-2 rounded-full transition-all duration-1000 ease-out"
+							<div class="w-full bg-gray-100 rounded-full h-1.5">
+								<div
+									class="bg-primary-600 h-1.5 rounded-full transition-all duration-1000 ease-out"
 									style="width: {skill.level}%"
 								></div>
 							</div>
