@@ -1,12 +1,16 @@
 import nodemailer from 'nodemailer';
-import { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
-const transporter = nodemailer.createTransport({
-	host: SMTP_HOST,
-	port: Number(SMTP_PORT),
-	secure: false,
-	auth: { user: SMTP_USER, pass: SMTP_PASS }
-});
+function createTransporter() {
+	const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = env;
+	if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) return null;
+	return nodemailer.createTransport({
+		host: SMTP_HOST,
+		port: Number(SMTP_PORT) || 587,
+		secure: false,
+		auth: { user: SMTP_USER, pass: SMTP_PASS }
+	});
+}
 
 export async function POST({ request }) {
 	try {
@@ -16,10 +20,16 @@ export async function POST({ request }) {
 			return new Response(JSON.stringify({ error: 'Todos los campos son obligatorios' }), { status: 400 });
 		}
 
+		const transporter = createTransporter();
+		if (!transporter) {
+			console.warn('SMTP no configurado — las variables de entorno faltan');
+			return new Response(JSON.stringify({ error: 'Servicio de correo no disponible' }), { status: 500 });
+		}
+
 		await transporter.sendMail({
-			from: `"${name}" <${SMTP_USER}>`,
+			from: `"${name}" <${env.SMTP_USER}>`,
 			replyTo: email,
-			to: CONTACT_EMAIL,
+			to: env.CONTACT_EMAIL || env.SMTP_USER,
 			subject: `Nuevo mensaje de ${name} - Hacktivarte`,
 			html: `
 				<h2>Nuevo mensaje desde el portafolio</h2>
