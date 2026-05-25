@@ -10,18 +10,23 @@
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		status = 'sending';
-		
-		// Simular envío de formulario
-		await new Promise(resolve => setTimeout(resolve, 1500));
-		
-		// Aquí podrías agregar lógica real de envío
-		console.log('Form data:', formData);
-		
-		status = 'success';
-		setTimeout(() => {
-			status = 'idle';
+
+		try {
+			const res = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData)
+			});
+
+			if (!res.ok) throw new Error('Error al enviar');
+
+			status = 'success';
 			formData = { name: '', email: '', message: '' };
-		}, 3000);
+		} catch {
+			status = 'error';
+		}
+
+		setTimeout(() => { status = 'idle'; }, 3000);
 	}
 </script>
 
@@ -93,6 +98,11 @@
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
 						</svg>
 						¡Mensaje Enviado!
+					{:else if status === 'error'}
+						<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+						</svg>
+						Error al enviar
 					{:else}
 						Enviar Mensaje
 					{/if}
