@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import { reveal } from '$lib/actions';
 </script>
 
 <section id="about" class="section-container">
-	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12">{$t('about.title')}</h2>
+	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12 reveal">{$t('about.title')}</h2>
 
 	<div class="grid md:grid-cols-2 gap-12 items-center">
-		<div class="space-y-4">
+		<div use:reveal class="space-y-4">
 			<p class="text-base sm:text-lg text-ink-secondary font-thin leading-relaxed">
 				{$t('about.p1')}
 			</p>
@@ -22,7 +23,7 @@
 			</div>
 		</div>
 
-		<div class="card p-8">
+		<div use:reveal class="card p-8">
 			<h3 class="text-xl font-semibold tracking-tight mb-6">{$t('about.experience_title')}</h3>
 			<div class="space-y-6">
 				<div class="border-l-2 border-primary-600 pl-4">

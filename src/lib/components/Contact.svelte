@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t, locale } from '$lib/i18n';
+	import { reveal } from '$lib/actions';
 
 	let formData = $state({
 		name: '',
@@ -33,10 +34,10 @@
 </script>
 
 <section id="contact" class="section-container bg-surface-soft">
-	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12">{$t('contact.title')}</h2>
+	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12 reveal">{$t('contact.title')}</h2>
 
 	<div class="max-w-2xl mx-auto">
-		<div class="card p-8">
+		<div use:reveal class="card p-8">
 			<p class="text-center text-ink-secondary mb-8">
 				{$t('contact.description')}
 			</p>
@@ -51,7 +52,7 @@
 						id="name"
 						bind:value={formData.name}
 						required
-						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-1 focus:ring-primary-600 focus:border-primary-600 outline-none transition"
+						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-2 focus:ring-primary-600/20 focus:border-primary-600 outline-none transition-all duration-200"
 						placeholder={$t('contact.name_placeholder')}
 					/>
 				</div>
@@ -65,7 +66,7 @@
 						id="email"
 						bind:value={formData.email}
 						required
-						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-1 focus:ring-primary-600 focus:border-primary-600 outline-none transition"
+						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-2 focus:ring-primary-600/20 focus:border-primary-600 outline-none transition-all duration-200"
 						placeholder={$t('contact.email_placeholder')}
 					/>
 				</div>
@@ -79,7 +80,7 @@
 						bind:value={formData.message}
 						required
 						rows="5"
-						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-1 focus:ring-primary-600 focus:border-primary-600 outline-none transition resize-none"
+						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-2 focus:ring-primary-600/20 focus:border-primary-600 outline-none transition-all duration-200 resize-none"
 						placeholder={$t('contact.message_placeholder')}
 					></textarea>
 				</div>
@@ -113,8 +114,8 @@
 		</div>
 
 		<div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
-			<div class="p-6">
-				<div class="w-10 h-10 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-3">
+			<div use:reveal class="p-6">
+				<div class="w-10 h-10 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
 					<svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
 					</svg>
@@ -123,7 +124,7 @@
 				<p class="text-xs text-ink-mute">hacktivartemexico@gmail.com</p>
 			</div>
 
-			<div class="p-6">
+			<div use:reveal class="p-6">
 				<div class="w-10 h-10 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-3">
 					<svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -134,7 +135,7 @@
 				<p class="text-xs text-ink-mute">{$t('contact.location_value')}</p>
 			</div>
 
-			<div class="p-6">
+			<div use:reveal class="p-6">
 				<div class="w-10 h-10 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-3">
 					<svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>

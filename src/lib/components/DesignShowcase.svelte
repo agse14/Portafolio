@@ -1,14 +1,14 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { t, locale } from '$lib/i18n';
+	import { reveal } from '$lib/actions';
 	import en from '$lib/i18n/en';
 	import es from '$lib/i18n/es';
 	import type enType from '$lib/i18n/en';
 
 	let activeCategory = $state('todas');
-	let cardsVisible = $state<Set<number>>(new Set());
-
+	let cardsVisible = $state<Set<number>>(new Set([0]));
 	let currentLocale = $state('en');
-	locale.subscribe((l) => { currentLocale = l; })();
 
 	const allTranslations: Record<string, typeof enType> = { en, es };
 
@@ -23,11 +23,11 @@
 
 	const projectMeta = [
 		{ image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop' },
-		{ image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop' },
+		{ image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop' },
 		{ image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop' },
 		{ image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=600&h=400&fit=crop' },
 		{ image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=400&fit=crop' },
-		{ image: 'https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=600&h=400&fit=crop' },
+		{ image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop' },
 		{ image: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=600&h=400&fit=crop' },
 		{ image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop' }
 	];
@@ -42,9 +42,18 @@
 				.filter((p) => p.category === activeCategory)
 	);
 
+	onMount(() => {
+		currentLocale = locale.detect();
+		const unsub = locale.subscribe((l) => {
+			currentLocale = l;
+		});
+		return () => unsub();
+	});
+
 	function observeCard(node: HTMLElement) {
-		const id = Number(node.dataset.cardId);
-		if (!id) return { destroy() {} };
+		const raw = node.dataset.cardId;
+		const id = raw !== undefined ? Number(raw) : undefined;
+		if (id === undefined || isNaN(id)) return { destroy() {} };
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -74,21 +83,23 @@
 	</div>
 
 	<div class="flex flex-wrap justify-center gap-2 mb-14">
-		{#each filterCategories as cat}
-			<button
-				onclick={() => (activeCategory = cat.id)}
-				class="relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300
-					{activeCategory === cat.id
-						? 'text-white'
-						: 'text-ink-secondary bg-white hover:bg-design-50 border border-design-200/30 hover:border-design-300/50'}"
-			>
-				{#if activeCategory === cat.id}
-					<span class="absolute inset-0 rounded-full bg-gradient-to-r from-design-600 to-rose-500 shadow-lg shadow-design-600/25 animate-scale-in"></span>
-					<span class="relative z-10">{$t(cat.labelKey)}</span>
-				{:else}
-					{$t(cat.labelKey)}
-				{/if}
-			</button>
+		{#each filterCategories as cat, i}
+			<div use:reveal class="reveal" style="transition-delay: {i * 0.05}s">
+				<button
+					onclick={() => (activeCategory = cat.id)}
+					class="relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300
+						{activeCategory === cat.id
+							? 'text-white'
+							: 'text-ink-secondary bg-white hover:bg-design-50 border border-design-200/30 hover:border-design-300/50'}"
+				>
+					{#if activeCategory === cat.id}
+						<span class="absolute inset-0 rounded-full bg-gradient-to-r from-design-600 to-rose-500 shadow-lg shadow-design-600/25 animate-scale-in"></span>
+						<span class="relative z-10">{$t(cat.labelKey)}</span>
+					{:else}
+						{$t(cat.labelKey)}
+					{/if}
+				</button>
+			</div>
 		{/each}
 	</div>
 
@@ -98,7 +109,7 @@
 				use:observeCard
 				data-card-id={project.index}
 				class="card-design group cursor-default"
-				style="opacity: {cardsVisible.has(project.index) ? 1 : 0}; transform: translateY({cardsVisible.has(project.index) ? 0 : 30}px); transition: opacity 0.5s ease-out {project.index * 0.08}s, transform 0.5s ease-out {project.index * 0.08}s, box-shadow 0.5s ease;"
+				style="opacity: {cardsVisible.has(project.index) ? 1 : 0}; transform: translateY({cardsVisible.has(project.index) ? 0 : 30}px); transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) {project.index * 0.08}s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) {project.index * 0.08}s, box-shadow 0.5s ease;"
 			>
 				<div class="relative h-52 overflow-hidden rounded-t-xl">
 					<img
