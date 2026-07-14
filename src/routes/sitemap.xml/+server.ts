@@ -1,6 +1,6 @@
 export async function GET() {
 	const site = 'https://hacktivarte.com';
-	const sections = ['', '#about', '#projects', '#skills', '#contact'];
+	const sections = ['', '#about', '#projects', '#skills', '#contact', 'diseno'];
 
 	const urls = sections.map(
 		(section) => `

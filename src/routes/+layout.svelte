@@ -2,8 +2,11 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import FloatingWhatsApp from '$lib/components/FloatingWhatsApp.svelte';
+	import { locale } from '$lib/i18n';
 
 	let { children } = $props();
+
+	locale.init();
 </script>
 
 <svelte:head>

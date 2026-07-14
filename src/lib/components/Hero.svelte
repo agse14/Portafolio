@@ -1,24 +1,28 @@
+<script lang="ts">
+	import { t } from '$lib/i18n';
+</script>
+
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-indigo-50 to-surface-soft">
 	<div class="absolute inset-0 opacity-30" style="background: radial-gradient(ellipse 80% 60% at 50% -10%, #a5b4fc 0%, #818cf8 30%, #533afd 60%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 20%, #f5e9d4 0%, transparent 50%), radial-gradient(ellipse 50% 40% at 20% 30%, #e0e7ff 0%, transparent 50%);"></div>
 
 	<div class="section-container text-center relative z-10">
-		<span class="inline-flex px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-medium tracking-wide uppercase mb-6">Desarrollador Full Stack</span>
+		<span class="inline-flex px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-medium tracking-wide uppercase mb-6">{$t('hero.badge')}</span>
 
 		<h1 class="text-5xl sm:text-6xl lg:text-7xl font-thin tracking-tightest leading-tight mb-6 animate-fade-in text-ink">
-			Sistemas de <span class="text-primary-600 font-normal">Administración</span><br />
-			para tu Negocio
+			{$t('hero.title1')} <span class="text-primary-600 font-normal">{$t('hero.title2')}</span><br />
+			{$t('hero.title3')}
 		</h1>
 
 		<p class="text-lg sm:text-xl text-ink-secondary font-thin max-w-2xl mx-auto mb-10 leading-relaxed">
-			Especializado en SvelteKit, Vue.js y Laravel. Creo software de gestión empresarial a medida en Monterrey.
+			{$t('hero.description')}
 		</p>
 
 		<div class="flex flex-col sm:flex-row gap-3 justify-center">
 			<a href="#projects" class="btn-primary text-base px-6 py-3">
-				Ver Proyectos
+				{$t('hero.cta_projects')}
 			</a>
 			<a href="#contact" class="btn-secondary text-base px-6 py-3">
-				Contáctame
+				{$t('hero.cta_contact')}
 			</a>
 		</div>
 

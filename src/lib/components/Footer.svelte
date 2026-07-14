@@ -1,25 +1,30 @@
+<script lang="ts">
+	import { t } from '$lib/i18n';
+</script>
+
 <footer class="bg-white border-t border-hairline py-12">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="grid md:grid-cols-3 gap-8 mb-8">
 			<div>
 				<h3 class="text-lg font-semibold tracking-tight text-ink mb-3">Hacktivarte</h3>
 				<p class="text-sm text-ink-mute leading-relaxed">
-					Desarrollo de sistemas de administración y software de gestión empresarial a medida.
+					{$t('footer.description')}
 				</p>
 			</div>
 
 			<div>
-				<h4 class="text-xs font-medium text-ink-mute uppercase tracking-wide mb-3">Enlaces</h4>
+				<h4 class="text-xs font-medium text-ink-mute uppercase tracking-wide mb-3">{$t('footer.links_title')}</h4>
 				<ul class="space-y-2">
-					<li><a href="#home" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">Inicio</a></li>
-					<li><a href="#about" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">Sobre mí</a></li>
-					<li><a href="#projects" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">Proyectos</a></li>
-					<li><a href="#contact" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">Contacto</a></li>
+					<li><a href="/" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">{$t('footer.home')}</a></li>
+					<li><a href="/#about" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">{$t('footer.about')}</a></li>
+					<li><a href="/#projects" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">{$t('footer.development')}</a></li>
+					<li><a href="/diseno" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">{$t('footer.design')}</a></li>
+					<li><a href="/#contact" class="text-sm text-ink-secondary hover:text-primary-600 transition-colors">{$t('footer.contact')}</a></li>
 				</ul>
 			</div>
 
 			<div>
-				<h4 class="text-xs font-medium text-ink-mute uppercase tracking-wide mb-3">Redes</h4>
+				<h4 class="text-xs font-medium text-ink-mute uppercase tracking-wide mb-3">{$t('footer.social_title')}</h4>
 				<div class="flex gap-3">
 					<a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-ink-mute hover:text-primary-600 transition-colors">
 						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -36,8 +41,8 @@
 		</div>
 
 		<div class="border-t border-hairline pt-8 text-center">
-			<p class="text-xs text-ink-mute">&copy; {new Date().getFullYear()} Andrés Sánchez. Todos los derechos reservados.</p>
-			<p class="mt-1 text-xs text-ink-mute/60">Construido con SvelteKit y TailwindCSS</p>
+			<p class="text-xs text-ink-mute">&copy; {new Date().getFullYear()} Andrés Sánchez. {$t('footer.rights')}</p>
+			<p class="mt-1 text-xs text-ink-mute/60">{$t('footer.built')}</p>
 		</div>
 	</div>
 </footer>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { t, locale } from '$lib/i18n';
+
 	let formData = $state({
 		name: '',
 		email: '',
@@ -31,18 +33,18 @@
 </script>
 
 <section id="contact" class="section-container bg-surface-soft">
-	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12">Contáctame</h2>
+	<h2 class="text-3xl sm:text-4xl font-thin tracking-tight text-center mb-12">{$t('contact.title')}</h2>
 
 	<div class="max-w-2xl mx-auto">
 		<div class="card p-8">
 			<p class="text-center text-ink-secondary mb-8">
-				¿Tienes un proyecto en mente? ¡Me encantaría saber más! Envíame un mensaje y te responderé lo antes posible.
+				{$t('contact.description')}
 			</p>
 
 			<form onsubmit={handleSubmit} class="space-y-5">
 				<div>
 					<label for="name" class="block text-sm font-medium text-ink mb-2">
-						Nombre
+						{$t('contact.name_label')}
 					</label>
 					<input
 						type="text"
@@ -50,13 +52,13 @@
 						bind:value={formData.name}
 						required
 						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-1 focus:ring-primary-600 focus:border-primary-600 outline-none transition"
-						placeholder="Tu nombre"
+						placeholder={$t('contact.name_placeholder')}
 					/>
 				</div>
 
 				<div>
 					<label for="email" class="block text-sm font-medium text-ink mb-2">
-						Email
+						{$t('contact.email_label')}
 					</label>
 					<input
 						type="email"
@@ -64,13 +66,13 @@
 						bind:value={formData.email}
 						required
 						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-1 focus:ring-primary-600 focus:border-primary-600 outline-none transition"
-						placeholder="tu@email.com"
+						placeholder={$t('contact.email_placeholder')}
 					/>
 				</div>
 
 				<div>
 					<label for="message" class="block text-sm font-medium text-ink mb-2">
-						Mensaje
+						{$t('contact.message_label')}
 					</label>
 					<textarea
 						id="message"
@@ -78,7 +80,7 @@
 						required
 						rows="5"
 						class="w-full px-3 py-2.5 rounded-md border border-hairline-input bg-white text-ink text-sm placeholder:text-ink-mute focus:ring-1 focus:ring-primary-600 focus:border-primary-600 outline-none transition resize-none"
-						placeholder="Cuéntame sobre tu proyecto..."
+						placeholder={$t('contact.message_placeholder')}
 					></textarea>
 				</div>
 
@@ -92,19 +94,19 @@
 							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
 							<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
 						</svg>
-						Enviando...
+						{$t('contact.sending')}
 					{:else if status === 'success'}
 						<svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
 						</svg>
-						¡Mensaje Enviado!
+						{$t('contact.success')}
 					{:else if status === 'error'}
 						<svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
 						</svg>
-						Error al enviar
+						{$t('contact.error')}
 					{:else}
-						Enviar Mensaje
+						{$t('contact.send')}
 					{/if}
 				</button>
 			</form>
@@ -117,7 +119,7 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
 					</svg>
 				</div>
-				<h3 class="font-medium text-sm mb-1">Email</h3>
+				<h3 class="font-medium text-sm mb-1">{$t('contact.email_title')}</h3>
 				<p class="text-xs text-ink-mute">hacktivartemexico@gmail.com</p>
 			</div>
 
@@ -128,8 +130,8 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
 					</svg>
 				</div>
-				<h3 class="font-medium text-sm mb-1">Ubicación</h3>
-				<p class="text-xs text-ink-mute">Monterrey, Nuevo León, México</p>
+				<h3 class="font-medium text-sm mb-1">{$t('contact.location_title')}</h3>
+				<p class="text-xs text-ink-mute">{$t('contact.location_value')}</p>
 			</div>
 
 			<div class="p-6">
@@ -138,8 +140,8 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
 					</svg>
 				</div>
-				<h3 class="font-medium text-sm mb-1">Disponibilidad</h3>
-				<p class="text-xs text-ink-mute">Lun - Vie, 9am - 6pm</p>
+				<h3 class="font-medium text-sm mb-1">{$t('contact.availability_title')}</h3>
+				<p class="text-xs text-ink-mute">{$t('contact.availability_value')}</p>
 			</div>
 		</div>
 	</div>
